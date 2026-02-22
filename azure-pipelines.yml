@@ -1,0 +1,32 @@
+# Este é um ficheiro YAML de uma pipeline inicial (Starter pipeline) utilizada no Azure DevOps.
+# Serve como modelo base que pode ser personalizado para compilar (build), testar e fazer deploy de código.
+# A documentação oficial para personalizar pipelines em YAML pode ser consultada em: https://aka.ms/yaml
+
+# A secção "trigger" define quando a pipeline é executada automaticamente.
+# Neste caso, a pipeline é acionada sempre que existem alterações (push/commit)
+# na branch "main" do repositório.
+trigger:
+- main
+
+# A secção "pool" define o agente (máquina virtual) onde a pipeline irá correr.
+# "vmImage: ubuntu-latest" significa que será utilizada a versão mais recente
+# disponível do sistema operativo Ubuntu fornecida pela Microsoft.
+pool:
+  vmImage: ubuntu-latest
+
+# A secção "steps" contém as tarefas que serão executadas sequencialmente.
+steps:
+
+# Primeiro passo: executa um script simples numa linha.
+# O comando "echo Hello, world!" apenas escreve a mensagem no terminal.
+# "displayName" define o nome visível deste passo na interface do Azure DevOps.
+- script: echo Hello, world!
+  displayName: 'Executar um script de uma linha'
+
+# Segundo passo: executa um script com múltiplas linhas.
+# O símbolo "|" permite escrever várias linhas de comandos.
+# Neste exemplo, são apenas mensagens informativas mostradas no terminal.
+- script: |
+    echo Adicione outras tarefas para compilar, testar e fazer deploy do seu projeto.
+    echo Consulte https://aka.ms/yaml
+  displayName: 'Executar um script de várias linhas'
